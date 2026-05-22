@@ -7,7 +7,7 @@ Design and Demonstration of a Signal Processing Unit for Audio Analysis Using Py
 This project demonstrates a compact Signal Processing Unit (SPU) for audio analysis. The system operates on `.wav` recordings available in the project folder and applies a complete signal-processing pipeline: signal acquisition, time-domain inspection, filtering, Fast Fourier Transform (FFT), feature extraction, model training, prediction, and visualization. The implementation is practical rather than purely theoretical. It shows how a Python notebook can emulate the core workflow of a digital signal processor by transforming raw audio into structured numerical features and then using those features for classification. Since the dataset does not contain external human labels, the machine-learning stage uses source clip identity as the prediction target. This keeps the pipeline executable and scientifically interpretable while preserving the structure proposed in the original project notes.
 
 ## Introduction
-A Digital Signal Processor is designed to manipulate real-world signals efficiently. In this folder, the real-world signal is audio. The project intent is clear from the existing files: load audio, study its waveform, apply filtering, inspect its frequency content, extract features, and attach a predictive model on top of those features. The notebook `mainunit.ipynb` contained the beginnings of that pipeline, but it was incomplete and not fully executable end to end. The rebuilt `codex.ipynb` now serves as the clean working implementation of the same idea.
+A Digital Signal Processor is designed to manipulate real-world signals efficiently. In this folder, the real-world signal is audio. The project intent is clear from the existing files: load audio, study its waveform, apply filtering, inspect its frequency content, extract features, and attach a predictive model on top of those features. The implementation outlined in this thesis follows the complete signal-processing pipeline from raw audio to machine-learning-based prediction.
 
 ## Problem Statement
 Raw audio signals are difficult to use directly for pattern recognition because they are high-dimensional and sensitive to noise. A signal-processing pipeline is therefore needed to:
@@ -78,7 +78,7 @@ X(f) = integral of x(t)e^(-j2pift)dt
 In discrete computation, the FFT is used instead of the continuous transform because the audio is sampled digitally. The classifier never consumes the raw FFT directly in this implementation; instead, it uses summary features derived from short windows, which is usually more stable for small datasets.
 
 ## Results Interpretation
-The rebuilt notebook produces:
+A complete implementation of this system should produce:
 
 1. a metadata table for all audio files,
 2. a waveform plot,
@@ -113,4 +113,4 @@ Several realistic next steps follow naturally from the current structure:
 6. Compare classical ML models with PyTorch-based neural networks.
 
 ## Conclusion
-This project successfully demonstrates the architecture of a small Signal Processing Unit for audio. The folder already suggested a DSP pipeline, and the new `codex.ipynb` turns that idea into a working, readable implementation. The result is a complete educational prototype that starts from raw `.wav` audio, performs core digital signal processing, extracts informative descriptors, and finishes with machine-learning-based prediction.
+This project successfully demonstrates the architecture of a small Signal Processing Unit for audio. The thesis outlines a complete DSP pipeline that starts from raw `.wav` audio, performs core digital signal processing, extracts informative descriptors, and finishes with machine-learning-based prediction.
